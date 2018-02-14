@@ -1,7 +1,7 @@
 Movies Meteor
 =============
 
-![](movies.png)
+![](movies2.png)
 
 **Spanish** / English
 
