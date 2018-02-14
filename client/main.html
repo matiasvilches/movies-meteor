@@ -1,0 +1,43 @@
+<head>
+  <title>Meteor Peliculas</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Peliculas</h1>
+      <div class="login"> {{> loginButtons}} </div>
+
+      {{#if currentUser}}
+        <label class="hide-finished">
+          <input type="checkbox" checked="{{hideFinished}}">Ocultar Peliculas
+        </label>
+        <form class="nueva-pelicula">
+          <input type="text" name="titulo" placeholder="Una nueva pelicula">
+          <input type="submit" value="Agregar">
+        </form>
+      {{/if}}
+    </header>
+
+    <ul> {{#each peliculas}} {{> pelicula}} {{/each}} </ul>
+  </div>
+</body>
+
+<template name="pelicula">
+  <li class="{{#if checked}}checked{{/if}}">
+    {{#if isOwner}}
+      <input type="checkbox" checked="{{checked}}" class="toggle-checked">
+        <button class="toggle-private">
+          {{#if private}}
+            Private
+          {{else}}
+            Public
+          {{/if}}
+        </button>
+    {{/if}}
+    <span class="text">{{titulo}}</span>
+    {{#if isOwner}}
+      <button type="button" class="delete">Eliminar</button>
+    {{/if}}
+  </li>
+</template>
